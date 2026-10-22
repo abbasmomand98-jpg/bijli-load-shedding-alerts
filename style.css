@@ -1,0 +1,165 @@
+/* ============================================================
+   Bijli demo — volt yellow (#EAB308) on dark slate (#0F172A).
+   Clean minimal cards, generous whitespace, mobile-first.
+   ============================================================ */
+
+:root {
+  --volt: #eab308;
+  --volt-dark: #a16207;
+  --volt-tint: #fefce8;
+  --slate: #0f172a;
+  --slate-soft: #1e293b;
+  --ink: #0f172a;
+  --grey: #64748b;
+  --grey-light: #94a3b8;
+  --line: #e2e8f0;
+  --paper: #f8fafc;
+  --card: #ffffff;
+  --red: #dc2626;
+  --green: #16a34a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.shell { max-width: 720px; margin: 0 auto; padding: 0 16px 48px; }
+
+/* ---------- header ---------- */
+header { background: var(--slate); color: #fff; margin: 0 -16px; padding: 28px 20px 22px; }
+.brand { display: flex; align-items: center; gap: 10px; }
+.brand h1 { margin: 0; font-size: 30px; font-weight: 800; letter-spacing: -0.5px; }
+.bolt { font-size: 28px; }
+.tagline { margin: 6px 0 0; color: #cbd5e1; font-size: 15px; }
+.sample-note {
+  margin: 12px 0 0; font-size: 12.5px; color: #fde68a;
+  background: rgba(234, 179, 8, 0.12); border: 1px solid rgba(234, 179, 8, 0.4);
+  border-radius: 10px; padding: 8px 12px;
+}
+
+/* ---------- tabs ---------- */
+.tabs { display: flex; gap: 8px; margin: 18px 0 4px; }
+.tab-btn {
+  flex: 1; padding: 12px 6px; font-size: 15px; font-weight: 700;
+  border: 2px solid var(--line); background: var(--card); color: var(--grey);
+  border-radius: 14px; cursor: pointer;
+}
+.tab-btn.active { border-color: var(--volt); color: var(--volt-dark); background: var(--volt-tint); }
+
+/* ---------- cards ---------- */
+.panel { display: none; }
+.panel.active { display: block; }
+.card {
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 18px; padding: 18px; margin: 14px 0;
+}
+.card h2 { margin: 0 0 8px; font-size: 19px; font-weight: 800; }
+.muted { color: var(--grey); font-size: 14px; margin: 4px 0; }
+.meta { color: var(--grey-light); font-size: 13px; font-weight: 500; }
+.fineprint { font-size: 12.5px; }
+
+/* ---------- forms ---------- */
+label { font-weight: 700; font-size: 14px; display: block; margin-bottom: 6px; }
+select, input[type="range"] { width: 100%; }
+select {
+  padding: 12px; font-size: 16px; border-radius: 12px;
+  border: 2px solid var(--line); background: #fff; color: var(--ink);
+}
+select:focus { border-color: var(--volt); outline: none; }
+input[type="range"] { accent-color: var(--volt); margin: 10px 0 4px; }
+
+/* ---------- status chip ---------- */
+.status-card { background: var(--slate); border: none; color: #fff; }
+.status-card.on .dot { background: var(--green); }
+.status-card.off .dot { background: var(--red); }
+#status-text { font-size: 22px; font-weight: 800; margin: 0; display: flex; align-items: center; gap: 10px; }
+#status-text .dot { width: 18px; height: 18px; border-radius: 50%; display: inline-block; }
+.status-card .muted { color: #cbd5e1; }
+
+/* ---------- timeline ---------- */
+.timeline {
+  position: relative; height: 40px; border-radius: 20px;
+  background: #f1f5f9; margin: 12px 0 6px; overflow: visible;
+}
+.timeline .cut {
+  position: absolute; top: 0; bottom: 0; background: var(--red);
+  border-radius: 14px; opacity: 0.9;
+}
+.timeline .now {
+  position: absolute; top: -6px; bottom: -6px; width: 4px;
+  background: var(--slate); border-radius: 2px;
+}
+.timeline .now::after {
+  content: ""; position: absolute; top: -8px; left: -6px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: var(--volt); border: 3px solid var(--slate);
+}
+.timeline-labels {
+  display: flex; justify-content: space-between;
+  font-size: 12px; color: var(--grey-light); margin-bottom: 4px;
+}
+
+/* ---------- alert card ---------- */
+.alert-card { background: var(--volt); border: none; }
+.alert-card h2 { color: var(--slate); }
+.alert-card p { color: #713f12; margin: 4px 0 0; }
+
+/* ---------- upcoming cuts ---------- */
+.cut-row {
+  display: flex; align-items: center; gap: 12px;
+  background: var(--card); border: 1px solid var(--line);
+  border-radius: 14px; padding: 12px 14px; margin: 8px 0;
+}
+.cut-row .when { font-weight: 800; font-size: 16px; }
+.cut-row .dur { color: var(--grey); font-size: 13.5px; }
+.cut-row .tag {
+  margin-left: auto; background: var(--volt-tint); color: var(--volt-dark);
+  font-size: 12.5px; font-weight: 700; padding: 5px 12px; border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* ---------- appliances ---------- */
+.appliance {
+  display: flex; align-items: center; gap: 12px;
+  border: 1px solid var(--line); border-radius: 12px;
+  padding: 10px 12px; margin: 8px 0; cursor: pointer; background: #fff;
+}
+.appliance:hover { border-color: var(--volt); }
+.appliance input { width: 20px; height: 20px; accent-color: var(--volt); }
+.appliance .nm { font-weight: 600; font-size: 15.5px; }
+.appliance .wt { margin-left: auto; color: var(--grey); font-weight: 700; }
+
+/* ---------- load + recommendation ---------- */
+.load-card { background: var(--slate); border: none; color: #fff; }
+.load-card .muted { color: #cbd5e1; }
+.load-big { font-size: 40px; font-weight: 800; color: var(--volt); margin: 2px 0; }
+.rec-card { background: var(--volt-tint); border: 2px solid var(--volt); }
+.rec-card h3 { margin: 0 0 4px; font-size: 19px; }
+.rec-price { font-size: 28px; font-weight: 800; color: var(--volt-dark); margin: 8px 0 2px; }
+.rec-run { color: var(--grey); font-size: 14.5px; }
+.empty-rec { color: var(--grey); }
+
+/* ---------- community ---------- */
+.btn {
+  display: inline-block; padding: 14px 28px; font-size: 17px; font-weight: 800;
+  border: none; border-radius: 30px; cursor: pointer;
+}
+.btn.danger { background: var(--red); color: #fff; width: 100%; margin: 10px 0; }
+.btn.danger:hover { background: #b91c1c; }
+.volt-row {
+  display: flex; align-items: center; gap: 12px;
+  border: 1px solid var(--line); border-radius: 12px;
+  padding: 10px 14px; margin: 8px 0; background: #fff;
+}
+.volt-row .vdot { width: 16px; height: 16px; border-radius: 50%; }
+.volt-row .tm { font-weight: 700; }
+.volt-row .vv { margin-left: auto; font-weight: 800; font-size: 18px; }
+.note-card { background: #f1f5f9; }
+
+footer { margin-top: 28px; text-align: center; color: var(--grey-light); font-size: 13px; }

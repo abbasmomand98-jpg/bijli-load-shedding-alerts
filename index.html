@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bijli — Load-Shedding Alert &amp; UPS Planner</title>
+  <meta name="description" content="Bijli: a load-shedding alert and UPS planner concept for Pakistan. Area-wise outage timelines, right-size UPS calculator, community outage reports. Demo with sample data.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="shell">
+
+    <header>
+      <div class="brand"><span class="bolt">&#9889;</span><h1>Bijli</h1></div>
+      <p class="tagline">Load-Shedding Alert &amp; UPS Planner — UX concept</p>
+      <p class="sample-note">Demo: all outage schedules, UPS packages, and prices are sample data invented for this concept.</p>
+    </header>
+
+    <nav class="tabs" aria-label="Sections">
+      <button class="tab-btn" id="tab-alerts" data-tab="alerts">Alerts</button>
+      <button class="tab-btn" id="tab-ups" data-tab="ups">UPS Planner</button>
+      <button class="tab-btn" id="tab-community" data-tab="community">Community</button>
+    </nav>
+
+    <main>
+      <!-- ============ ALERTS ============ -->
+      <section id="panel-alerts" class="panel">
+        <div class="card">
+          <label for="area-select">Your area</label>
+          <select id="area-select"></select>
+          <p id="area-meta" class="muted"></p>
+        </div>
+        <div class="card status-card" id="status-chip">
+          <p id="status-text"></p>
+          <p id="status-sub" class="muted"></p>
+        </div>
+        <div class="card">
+          <h2>Today's outages</h2>
+          <div id="timeline" class="timeline"></div>
+          <div class="timeline-labels"><span>12 AM</span><span>6 AM</span><span>12 PM</span><span>6 PM</span><span>12 AM</span></div>
+        </div>
+        <div class="card alert-card">
+          <h2 id="alert-title"></h2>
+          <p id="alert-sub"></p>
+        </div>
+        <h2>Upcoming cuts</h2>
+        <div id="cuts-list"></div>
+      </section>
+
+      <!-- ============ UPS PLANNER ============ -->
+      <section id="panel-ups" class="panel">
+        <div class="card">
+          <h2>What runs on your UPS?</h2>
+          <p class="muted">Tick everything you want backed up during a cut.</p>
+          <div id="appliance-list"></div>
+        </div>
+        <div class="card">
+          <h2>Backup needed: <span id="hours-val">3 hours</span></h2>
+          <input id="hours-range" type="range" min="1" max="8" step="1" value="3">
+        </div>
+        <div class="card load-card">
+          <p class="muted">Your total load</p>
+          <p class="load-big"><span id="load-watts">0</span> W</p>
+          <p class="muted">&asymp; <span id="load-wh">0</span> Wh needed</p>
+        </div>
+        <h2>Recommended for you</h2>
+        <div id="rec-box"></div>
+        <p class="muted fineprint">Prices are sample — check your local market before buying.</p>
+      </section>
+
+      <!-- ============ COMMUNITY ============ -->
+      <section id="panel-community" class="panel">
+        <div class="card report-card">
+          <h2>Power out right now?</h2>
+          <p>One tap warns your whole area — faster than any helpline.</p>
+          <button id="report-btn" class="btn danger">Report outage</button>
+          <p class="muted"><span id="report-count">0</span> neighbours reported today in <span id="report-area"></span></p>
+        </div>
+        <h2>Voltage fluctuation log <span class="meta">(today)</span></h2>
+        <div id="voltage-list"></div>
+        <div class="card">
+          <h2>Protect your appliances</h2>
+          <p id="guide-box"></p>
+        </div>
+        <div class="card note-card">
+          <p><strong>Area saved on this device.</strong></p>
+          <p class="muted">Works offline &middot; no account needed</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Bijli — UX concept by Muhammad Abbas Khan &middot; All data on this page is sample data.</p>
+    </footer>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="logic.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
